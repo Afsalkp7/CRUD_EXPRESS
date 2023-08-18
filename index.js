@@ -75,7 +75,7 @@ app.post("/delete/:id", (req, res) => {
     const items = readData();
     const updatedItems = items.filter(item => item.id !== itemId);
     writeData(updatedItems);
-    res.redirect('/items');
+    updatedItems.length === 0 ? res.redirect('/'):res.redirect('/items');
 });
 
 
