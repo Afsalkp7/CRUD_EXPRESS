@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>LIST OF PRODUCTS</h1>
+        <P>List of added products by customer</P>
+   
+        <table class="table table-success table-striped" style="text-align: center;">
+            <tr>
+                <th>
+                    SI No.
+                </th>
+                <th>
+                    Product
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Price   
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+            <% items.forEach(item => { %>
+                <tr>
+                  <td><%= item.id %></td>
+                  <td><%= item.name %></td>
+                  <td><%= item.description %></td>
+                  <td><%= item.price %></td>
+                  <td>
+                    <a href="/edit/<%= item.id %>"><button class="btn btn-success" type="submit">Update</button></a>
+                    <form action="/delete/<%= item.id %>" method="post" style="display: inline;">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                  </td>
+                </tr>
+              <% }); %>
+        </table>
+    </div>
+</body>
+</html>
